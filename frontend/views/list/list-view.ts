@@ -1,28 +1,33 @@
 import { html } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { View } from '../../views/view';
+import '@vaadin/button';
+import '@vaadin/grid';
+import '@vaadin/grid/vaadin-grid-column';
+import '@vaadin/text-field';
 
 @customElement('list-view')
 export class ListView extends View {
   render() {
-    return html`<div>
-      <img style="width: 200px;" src="images/empty-plant.png" />
-      <h2>This place intentionally left empty</h2>
-      <p>It’s a place where you can grow your own UI 🤗</p>
-    </div>`;
+    return html`
+      <div class="toolbar flex gap-s">
+        <vaadin-text-field placeholder="Filter by name" clear-button-visible></vaadin-text-field>
+        <vaadin-button>Add Contact</vaadin-button>
+      </div>
+      <div class="content flex gap-m h-full">
+        <vaadin-grid class="grid h-full">
+          <vaadin-grid-column path="firstName" auto-width></vaadin-grid-column>
+          <vaadin-grid-column path="lastName" auto-width></vaadin-grid-column>
+          <vaadin-grid-column path="email" auto-width></vaadin-grid-column>
+          <vaadin-grid-column path="status.name" auto-width></vaadin-grid-column>
+          <vaadin-grid-column path="company.name" auto-width></vaadin-grid-column>
+        </vaadin-grid>
+      </div>
+    `;
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add(
-      'flex',
-      'flex-col',
-      'h-full',
-      'items-center',
-      'justify-center',
-      'p-l',
-      'text-center',
-      'box-border'
-    );
+    this.classList.add('box-border', 'flex', 'flex-col', 'p-m', 'gap-s', 'w-full', 'h-full');
   }
 }
