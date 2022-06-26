@@ -7,6 +7,7 @@ import '@vaadin/grid/vaadin-grid-column';
 import '@vaadin/text-field';
 
 import './contact-form';
+import { crmStore } from 'Frontend/stores/app-store';
 
 @customElement('list-view')
 export class ListView extends View {
@@ -17,7 +18,7 @@ export class ListView extends View {
         <vaadin-button>Add Contact</vaadin-button>
       </div>
       <div class="content flex gap-m h-full">
-        <vaadin-grid class="grid h-full">
+        <vaadin-grid class="grid h-full" .items=${crmStore.contacts}>
           <vaadin-grid-column path="firstName" auto-width></vaadin-grid-column>
           <vaadin-grid-column path="lastName" auto-width></vaadin-grid-column>
           <vaadin-grid-column path="email" auto-width></vaadin-grid-column>
