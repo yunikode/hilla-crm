@@ -6,6 +6,8 @@ import '@vaadin/grid';
 import '@vaadin/grid/vaadin-grid-column';
 import '@vaadin/text-field';
 
+import './contact-form';
+
 @customElement('list-view')
 export class ListView extends View {
   render() {
@@ -22,6 +24,7 @@ export class ListView extends View {
           <vaadin-grid-column path="status.name" auto-width></vaadin-grid-column>
           <vaadin-grid-column path="company.name" auto-width></vaadin-grid-column>
         </vaadin-grid>
+        <contact-form class="flex flex-col gap-s"></contact-form>
       </div>
     `;
   }
