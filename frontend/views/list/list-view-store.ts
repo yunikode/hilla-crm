@@ -24,6 +24,14 @@ class ListViewStore {
   setSelectedContact(contact: Contact) {
     this.selectedContact = contact;
   }
+
+  editNew() {
+    this.selectedContact = ContactModel.createEmptyValue();
+  }
+
+  cancelEdit() {
+    this.selectedContact = null;
+  }
 }
 
 export const listViewStore = new ListViewStore();
